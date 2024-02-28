@@ -4,18 +4,28 @@ END_PATTERN="end"
 START_PATTERN="start"
 PASS_PERCENT="passPercent"
 
+get_datetime_from_json(){
 #grep -Eo "\"$START_PATTERN\"[^,]*" "$REPORT_PATH" # Extracts a row from the JSON file. Does NOT handle multiple matches, so the key must be unique
 # awk -F ': "' '{print $2}'                        # Retrieves the value from the key and strips the leading quote. Does NOT work for numerical responses.
 # awk -F 'T' '{print $1}'                          # Retrieves just the day from a date formatted like YYYY-MM-DDTHH:MM:SS.NNNZ
+  KEY=$1
+  FILE=$2
+  grep -Eo "\"$KEY\"[^,]*" "$FILE" | awk -F ': "' '{print $2}' | awk -F 'T' '{print $1}'
+}
+
+get_number_from_json(){
+  KEY=$1
+  FILE=$2
+  grep -Eo "\"$KEY\"[^,]*" "$REPORT_PATH" | awk -F ': ' '{print $2}'
+}
 
 grep -Eo "\"$START_PATTERN\"[^,]*" "$REPORT_PATH"
-START_TIME=$(grep -Eo "\"$START_PATTERN\"[^,]*" "$REPORT_PATH" | awk -F ': "' '{print $2}' | awk -F 'T' '{print $1}')
+START_TIME=$(get_datetime_from_json "$START_PATTERN" "$REPORT_PATH")
 
 grep -Eo "\"$END_PATTERN\"[^,]*" "$REPORT_PATH"
-#END_TIME=$(grep -Eo "\"$END_PATTERN\"[^,]*" "$REPORT_PATH" | awk -F ': "' '{print $2}' |  awk -F 'T' '{print $1}')
 
 grep -Eo "\"$PASS_PERCENT\"[^,]*" "$REPORT_PATH"
-PASS_RESULT=$(grep -Eo "\"$PASS_PERCENT\"[^,]*" "$REPORT_PATH" | awk -F ': ' '{print $2}')
+PASS_RESULT=$(get_number_from_json "$PASS_PASS_PERCENT" "$REPORT_PATH")
 
 
 TODAY=$(date +"%Y-%m-%d")
@@ -29,7 +39,7 @@ else
   exit 1
 fi
 
-if [ "$PASS_RESULT" -eq 100 ];
+if [ "$PASS_RESULT" == "100" ];
 then
   echo "Cypress tests passed, based upon $REPORT_PATH."
 else

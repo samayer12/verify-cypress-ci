@@ -12,3 +12,5 @@ This repo does not assume access to `jq`.
 * Create a demo CI/CD job that runs `verify-cypress.sh`
 * More robust date checks in `verify-cypress.sh`
 * Auto-commit `output.json` as part of a git hook?
+* Consider doing time comparisons with epoch instead of strings
+* Can we also assert no skipped tests or something like that?
