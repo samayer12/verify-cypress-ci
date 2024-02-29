@@ -7,8 +7,14 @@ Cypress tests are still useful, but only if you execute them and look at the res
 
 This repo does not assume access to `jq`.
 
+## Getting Started
+
+Run `./test/test-verify-cypress.sh` if you're making changes to the script.
+The `test/data` directory contains example test reports.
+
 ## TODO
 
+* Fix happy-path test with `good-output.json`
 * Auto-commit `output.json` as part of a git hook?
 * Can we also assert no skipped tests or something like that?
 * Consider doing time comparisons with epoch instead of strings
