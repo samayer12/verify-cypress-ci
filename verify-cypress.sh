@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-REPORT_PATH='cypress/report/output.json'
+
+REPORT_PATH=$1
 END_PATTERN="end"
 START_PATTERN="start"
 PASS_PERCENT="passPercent"
