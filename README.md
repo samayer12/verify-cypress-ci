@@ -14,6 +14,7 @@ The `test/data` directory contains example test reports.
 
 ## TODO
 
+* CI jobs for python version
 * Fix sad-path test by inspecting messages returned in log
 * Auto-commit `output.json` as part of a git hook?
 * Can we also assert no skipped tests or something like that?
