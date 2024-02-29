@@ -14,20 +14,16 @@ get_datetime_from_json(){
   grep -Eo "\"$KEY\"[^,]*" "$FILE" | awk -F ': "' '{print $2}' | awk -F 'T' '{print $1}'
 }
 
-get_number_from_json(){
-  KEY=$1
-  FILE=$2
-  grep -Eo "\"$KEY\"[^,]*" "$REPORT_PATH" | awk -F ': ' '{print $2}'
-}
-
 grep -Eo "\"$START_PATTERN\"[^,]*" "$REPORT_PATH"
 START_TIME=$(get_datetime_from_json "$START_PATTERN" "$REPORT_PATH")
+echo "START TIME IS: $START_TIME"
 
 grep -Eo "\"$END_PATTERN\"[^,]*" "$REPORT_PATH"
 
 grep -Eo "\"$PASS_PERCENT\"[^,]*" "$REPORT_PATH"
-PASS_RESULT=$(get_number_from_json "$PASS_PASS_PERCENT" "$REPORT_PATH")
+PASS_RESULT=$(grep -Eo "\"$PASS_PERCENT\"[^,]*" "$REPORT_PATH" | awk -F ': ' '{print $2}')
 
+echo "PASS RESULT IS: $PASS_RESULT"
 
 TODAY=$(date +"%Y-%m-%d")
 

@@ -2,6 +2,10 @@
 echo "Starting tests from $(pwd)"
 
 # Happy Path Tests
+touch tests.log
+yarn test
+cp ../cypress/report/output.json data/good-output.json
+
 for TEST_FILE in data/good-output.json
 do
   echo "" >> tests.log
