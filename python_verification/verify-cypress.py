@@ -1,28 +1,14 @@
-#! /usr/bin/env python
+#! /usr/bin/env python_verification
 """
-A skeleton python script which reads from an input file,
+A skeleton python_verification script which reads from an input file,
 writes to an output file and parses command line arguments
 """
 from __future__ import print_function
-import argparse
 import json
 import sys
 from datetime import datetime
 
-
-def parse_args(args):
-    parser = argparse.ArgumentParser(description=__doc__)
-
-    parser.add_argument(
-        "input", nargs="?", default="-",
-        metavar="INPUT_FILE", type=argparse.FileType("r"),
-        help="path to the input file (read from stdin if omitted)")
-
-    parser.add_argument(
-        "output", nargs="?", default="-",
-        metavar="OUTPUT_FILE", type=argparse.FileType("w"),
-        help="path to the output file (write to stdout if omitted)")
-    return parser.parse_args(args)
+from python_verification.parseArgs import parse_args
 
 
 def main():
