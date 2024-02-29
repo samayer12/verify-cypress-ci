@@ -6,4 +6,4 @@ verify:
   image: ubuntu:latest
   allow_failure: true
   script:
-    - ./verify-cypress.sh
+    - ./shell/verify-cypress.sh cypress/report/output.json
