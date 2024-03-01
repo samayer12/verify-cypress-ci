@@ -1,0 +1,20 @@
+name: Verify Cypress with Shell
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Test shell implementation
+      run: ./shell/test/test-verify-cypress.sh
+
+    - name: Run shell implementation
+      run: bash ./shell/verify-cypress.sh cypress/report/output.json
