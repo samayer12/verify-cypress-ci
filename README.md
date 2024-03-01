@@ -7,13 +7,17 @@ Cypress tests are still useful, but only if you execute them and look at the res
 
 This repo does not assume access to `jq`.
 
-If you'd prefer to not rely on bash scripting, you can achieve a similar outcome by looking at the implementation provided in `python_verification`.
-
 ## Getting Started
 
-Run `./shell/test/test-verify-cypress.sh` if you're making changes to the script.
-The `test/data` directory contains example test reports.
+### Shell
 
+Run `./shell/test/test-verify-cypress.sh` if you're making changes to the script.
+The `shell/test/data` directory contains example test reports.
+
+### Python
+
+Run `python -m unittest python_verification.test_verify_cypress.VerificationTests` from project root.
+The `pytyhon_verification/test/data` directory contains example test reports.
 
 ## TODO
 

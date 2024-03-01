@@ -7,11 +7,11 @@ from __future__ import print_function
 
 import sys
 
-import python_verification.parseArgs
+import python_verification.verify_cypress
 
 
 def main():
-    python_verification.parseArgs.inspect_report(sys.argv[1:])
+    python_verification.verify_cypress.inspect_report(sys.argv[1:])
 
 
 if __name__ == "__main__":

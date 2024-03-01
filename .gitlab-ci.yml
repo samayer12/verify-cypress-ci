@@ -1,9 +1,16 @@
 stages:
   - verify
 
-verify:
+verify-shell:
   stage: verify
   image: ubuntu:latest
   allow_failure: true
   script:
     - ./shell/verify-cypress.sh cypress/report/output.json
+
+verify-python:
+  stage: verify
+  image: python:latest
+  allow_failure: true
+  script:
+    - python -m unittest python_verification.test_verify_cypress.VerificationTests
