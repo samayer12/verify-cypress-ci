@@ -16,7 +16,7 @@ The `shell/test/data` directory contains example test reports.
 
 ### Python
 
-Run `python -m unittest python_verification.test_verify_cypress.VerificationTests` from project root.
+Run `python python_verification/test_verify_cypress.py` from project root.
 The `pytyhon_verification/test/data` directory contains example test reports.
 
 ## TODO
