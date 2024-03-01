@@ -1,22 +1,20 @@
 import unittest
-from unittest.mock import patch
 
 import python_verification.parseArgs
 
-class MyTestCase(unittest.TestCase):
 
-    @patch('python_verification.parseArgs.parse_args')
-    def test_should_accept_passing_report(self, parse_args_mock):
-        python_verification.parseArgs.inspect_report()
-        parse_args_mock.assert_called_once()
+class VerificationTests(unittest.TestCase):
+
+    def test_should_accept_passing_report(self):
+        self.assertTrue(python_verification.parseArgs.inspect_report(['test/data/good-output.json']))
 
     def test_should_reject_failing_report(self):
-        python_verification.parseArgs.inspect_report()
-        self.assertEqual(True, False)  # add assertion here
+        self.assertRaises(ValueError, python_verification.parseArgs.inspect_report,
+                          ['./test/data/failing-test-output.json'])
 
     def test_should_reject_old_report(self):
-        python_verification.parseArgs.inspect_report()
-        self.assertEqual(True, False)  # add assertion here
+        self.assertRaises(ValueError, python_verification.parseArgs.inspect_report,
+                          ['test/data/old-test-output.json'])
 
 
 if __name__ == '__main__':
