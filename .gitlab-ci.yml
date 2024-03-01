@@ -1,9 +1,26 @@
 stages:
+  - test
   - verify
+
+test-shell:
+  stage: verify
+  image: ubuntu:latest
+  allow_failure: true
+  script:
+    - ./shell/verify-cypress.sh cypress/report/output.json
+
+test-python:
+  stage: verify
+  image: python:latest
+  allow_failure: true
+  script:
+    - python -m unittest python_verification.test_verify_cypress.VerificationTests
 
 verify-shell:
   stage: verify
   image: ubuntu:latest
+  dependencies:
+    - test-shell
   allow_failure: true
   script:
     - ./shell/verify-cypress.sh cypress/report/output.json
@@ -11,6 +28,8 @@ verify-shell:
 verify-python:
   stage: verify
   image: python:latest
+  dependencies:
+    - test-python
   allow_failure: true
   script:
-    - python -m unittest python_verification.test_verify_cypress.VerificationTests
+    - python python_verification/main.py cypress/report/output.json

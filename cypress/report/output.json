@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2024-03-01T16:18:01.476Z",
-    "end": "2024-03-01T16:18:04.905Z",
-    "duration": 3429
+    "start": "2024-03-01T21:52:49.413Z",
+    "end": "2024-03-01T21:52:52.018Z",
+    "duration": 2605
   },
   "results": [
     {
-      "uuid": "18a0388c-7d09-454a-9e77-b3f1342288bb",
+      "uuid": "ab7669aa-210b-423a-8c38-dd60e36c1aee",
       "title": "",
       "fullFile": "cypress/e2e/1-getting-started/todo.cy.js",
       "file": "cypress/e2e/1-getting-started/todo.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e070abe1-3fd6-4482-a467-3eadd8ad942c",
+          "uuid": "fc58ae78-39fc-41f6-812b-6683f5f579c4",
           "title": "example to-do app",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "displays two todo items by default",
               "fullTitle": "example to-do app displays two todo items by default",
               "timedOut": null,
-              "duration": 735,
+              "duration": 358,
               "state": "passed",
               "speed": "fast",
               "pass": true,
