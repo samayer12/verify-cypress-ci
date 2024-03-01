@@ -7,14 +7,16 @@ Cypress tests are still useful, but only if you execute them and look at the res
 
 This repo does not assume access to `jq`.
 
+If you'd prefer to not rely on bash scripting, you can achieve a similar outcome by looking at the implementation provided in `python_verification`.
+
 ## Getting Started
 
-Run `./test/test-verify-cypress.sh` if you're making changes to the script.
+Run `./shell/test/test-verify-cypress.sh` if you're making changes to the script.
 The `test/data` directory contains example test reports.
+
 
 ## TODO
 
-* CI jobs for python version
 * Fix sad-path test by inspecting messages returned in log
 * Auto-commit `output.json` as part of a git hook?
 * Can we also assert no skipped tests or something like that?
