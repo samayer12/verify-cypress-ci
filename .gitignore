@@ -3,3 +3,4 @@ yarn-error.log
 .idea/
 *.log
 __pycache__/
+.DS_Store
