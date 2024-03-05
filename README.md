@@ -11,6 +11,7 @@ This repo does not assume access to `jq`.
 
 ### Shell
 
+Run `yarn test && cp cypress/report/output.json shell/test/data/good-output.json` to generate an updated test report for automated tests.
 Run `./shell/test/test-verify-cypress.sh` if you're making changes to the script.
 The `shell/test/data` directory contains example test reports.
 

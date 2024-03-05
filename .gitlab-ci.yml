@@ -7,7 +7,7 @@ test-shell:
   image: ubuntu:latest
   allow_failure: true
   script:
-    - ./shell/verify-cypress.sh cypress/report/output.json
+    - ./shell/test/test-verify-cypress.sh
 
 test-python:
   stage: test
