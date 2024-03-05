@@ -3,6 +3,10 @@ import json
 from datetime import datetime
 
 
+TEST_STATUS_MESSAGE = "Cypress Test Status: {}% @ {} from input '{}'. "
+PASS_THRESHOLD = 100
+
+
 def inspect_report(args):
     parser = argparse.ArgumentParser(description=__doc__)
 
@@ -18,10 +22,17 @@ def inspect_report(args):
         pass_percent = report_data["stats"]["passPercent"]
         start_time = datetime.fromisoformat(report_data["stats"]["start"])
 
-        if pass_percent != 100:
-            raise ValueError("Pass Percent is not 100%")
+        if pass_percent != PASS_THRESHOLD:
+            raise ValueError(
+                TEST_STATUS_MESSAGE.format(pass_percent, start_time, inputs.input.name) +
+                "Pass percentage is not {}.".format(PASS_THRESHOLD)
+            )
+
         if start_time.date() < datetime.utcnow().date():
-            raise ValueError("Looks like tests weren't ran today")
+            raise ValueError(
+                TEST_STATUS_MESSAGE.format(pass_percent, start_time, inputs.input.name) +
+                "It looks like journey tests weren't ran today."
+            )
         else:
-            print("Cypress Test Status: {}% @ {} from input '{}'".format(pass_percent, start_time, inputs.input.name))
+            print(TEST_STATUS_MESSAGE.format(pass_percent, start_time, inputs.input.name))
             return True

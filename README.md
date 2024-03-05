@@ -16,13 +16,21 @@ The `shell/test/data` directory contains example test reports.
 
 ### Python
 
+Run `yarn test && cp cypress/report/output.json python_verification/test/data/good-output.json` to generate an updated test report for automated tests.
 Run `python python_verification/test_verify_cypress.py` from project root.
 The `pytyhon_verification/test/data` directory contains example test reports.
 
 ## TODO
 
-* Fix sad-path test by inspecting messages returned in log
+### General
+
 * Auto-commit `output.json` as part of a git hook?
-* Can we also assert no skipped tests or something like that?
-* Consider doing time comparisons with epoch instead of strings
-* More robust date checks in `verify-cypress.sh`
+* Should we also assert no skipped tests?
+
+### Python
+
+* Resolve `ResourceWarning` in python tests
+ 
+### Shell
+* More robust date checks in `verify-cypress.sh`. Such as time comparisons with epoch instead of strings.
+* Fix sad-path test by inspecting messages returned in log for shell tests
